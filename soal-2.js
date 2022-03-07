@@ -7,8 +7,7 @@ function checkTypeNumber(givenNumber) {
     result = "GENAP"
   }else if(typeof(givenNumber) == 'string' || typeof(givenNumber) == 'object'){
     result = "Error: Invalid data type"
-  }
-  else if(typeof(givenNumber) == 'undefined'){
+  }else if(typeof(givenNumber) == 'undefined'){
     result = "Error: Bro where is the parameter?"
   }else{
     result = "GANJIL"
@@ -24,4 +23,4 @@ console.log(checkTypeNumber(3)) //OUTPUT yang keluar => "GANJIL"
 console.log(checkTypeNumber("3")) // OUTPUT yang keluar => "Error: Invalid data type"
 console.log(checkTypeNumber({})) // OUTPUT yang keluar => "Error: Invalid data type"
 console.log(checkTypeNumber([])) // OUTPUT yang keluar => "Error: Invalid data type"
-console.log(checkTypeNumber()) // OUTPUT yang kelaur => "Errpr: Bro where is the parameter?"
+console.log(checkTypeNumber()) // OUTPUT yang keluar => "Error: Bro where is the parameter?"
