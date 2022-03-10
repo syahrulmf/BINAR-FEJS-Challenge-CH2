@@ -58,7 +58,7 @@ function getInfoPenjualan(dataPenjualan){
 
   const persentaseKeuntungan = (totalKeuntungan / totalModal) * 100;
 
-  const produkBukuTerlaris = dataPenjualan.reduce((prev, curr, i) => {
+  const produkBukuTerlaris = dataPenjualan.reduce((prev, curr) => {
     return curr.totalTerjual > (prev.totalTerjual || 0) ? curr : prev.namaProduk;
   });
 
