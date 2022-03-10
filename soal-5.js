@@ -1,32 +1,30 @@
 
 function getSplitName(personName) {
-  var result = [];
+  var result = {};
   const splitName = personName.toString().split(' ')
   let regNumber = /^[0-9]+$/
 
-  if(splitName.length > 3){
-    result = "Error : This function is only for 3 characters name"
-  } else if(splitName.length <= 3 && !splitName.toString().match(regNumber)){
-    for (var i = splitName.length; i > 0; i--) {
-      var NewIssue = {};
-          
-      NewIssue.firstName = splitName[0];
-      NewIssue.middleName = splitName[1];
-      NewIssue.lastName = splitName[2];
-    }
-    result.push(NewIssue);
-  } else if(splitName.toString().match(regNumber)){
-    result = "Error : This function is only for string name"
-  }
+  if(splitName.length > 3){result = "Error : This function is only for 3 characters name";}
 
-  if(result[0].lastName == undefined){
-    result[0].lastName = result[0].middleName
-    result[0].middleName = undefined
-  }
+  if(splitName.length == 3 && !splitName.toString().match(regNumber)){
+    result.firstName = splitName[0];
+    result.middleName = splitName[1];
+    result.lastName = splitName[2];
+  } 
 
-  if(result[0].middleName == undefined){result[0].middleName = null} 
+  if(splitName.length == 2 && !splitName.toString().match(regNumber)){
+    result.firstName = splitName[0];
+    result.middleName = null;
+    result.lastName = splitName[1];
+  } 
+
+  if(splitName.length == 1 && !splitName.toString().match(regNumber)){
+    result.firstName = splitName[0];
+    result.middleName = null;
+    result.lastName = null;
+  } 
   
-  if(result[0].lastName == undefined){result[0].lastName = null}
+  if(splitName.toString().match(regNumber)){result = "Error : This function is only for string name";}
 
   return result
 }
