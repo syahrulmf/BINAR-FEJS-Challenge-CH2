@@ -2,30 +2,28 @@
 function getSplitName(personName) {
   var result = {};
   const splitName = personName.toString().split(' ')
-  let regNumber = /^[0-9]+$/
 
+  if(splitName.length > 3){result = "Error : This function is only for 3 characters name";}
   
-  if(splitName.length == 3 && !splitName.toString().match(regNumber)){
+  if(splitName.toString().match(/^[0-9]+$/)){result = "Error : This function is only for string name";}
+  
+  if(splitName.length == 3){
     result.firstName = splitName[0];
     result.middleName = splitName[1];
     result.lastName = splitName[2];
   } 
   
-  if(splitName.length == 2 && !splitName.toString().match(regNumber)){
+  if(splitName.length == 2){
     result.firstName = splitName[0];
     result.middleName = null;
     result.lastName = splitName[1];
   } 
   
-  if(splitName.length == 1 && !splitName.toString().match(regNumber)){
+  if(splitName.length == 1){
     result.firstName = splitName[0];
     result.middleName = null;
     result.lastName = null;
   } 
-  
-  if(splitName.length > 3){result = "Error : This function is only for 3 characters name";}
-  
-  if(splitName.toString().match(regNumber)){result = "Error : This function is only for string name";}
 
   return result
 }

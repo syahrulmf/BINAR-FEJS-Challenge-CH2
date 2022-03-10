@@ -1,25 +1,22 @@
 function checkEmail(email) {
-  let result = ""
-  let regexEmail = /^([a-z\d\.-]+)@([a-z\d-]+).([a-z]{2,8})(\.[a-z]{2,8})?$/
+  let regexEmail = /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/
   let regexEmailInvalid = /^([a-z\d\.-]+)@([a-z\d-]+)$/
-  let regexNumber = /^[0-9]+$/
 
-  if(typeof(email) == 'undefined'){email = false}
+  if(typeof(email) == 'undefined'){return "ERROR : Email cannot be empty, Email must be a valid address, ex: me@mydomain.com"}
 
-  if(email.toString().match(regexEmailInvalid)){
-    result = "INVALID"
-  } else if (email.toString().match(regexEmail)) {
-    result = "VALID"
-  } else if (!email.toString().match(regexEmail) && typeof(email) == 'string') {
-    result = "ERROR : Your email is invalid because you only input the string, Email must be a valid address, ex: me@mydomain.com"
-  } else if (email.toString().match(regexNumber)) {
-    result = "ERROR : Your email is invalid because you only input the number, Email must be a valid address, ex: me@mydomain.com"
-  } else if(email == false){
-    result = "ERROR : Email cannot be empty, Email must be a valid address, ex: me@mydomain.com"
-  } else {
-    result = "ERROR"
+  if (typeof(email) !== 'string') {
+    return "ERROR : Your email is invalid because you only input the number, Email must be a valid address, ex: me@mydomain.com"
   }
-  return result
+
+  if (!email.match(regexEmail) && !email.match(regexEmailInvalid)) {
+    return "ERROR : Your email is invalid because you only input the string, Email must be a valid address, ex: me@mydomain.com"
+  }
+
+  if(email.match(regexEmailInvalid)){
+    return "INVALID"
+  } 
+  
+  return "VALID"
 }
 
 console.log(checkEmail("apranata@binar.co.id")) // => "VALID"

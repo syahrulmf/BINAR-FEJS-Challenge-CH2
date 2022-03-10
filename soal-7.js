@@ -26,9 +26,7 @@ const dataPenjualanPakAldi = [
 ]
 
 function hitungTotalPenjualan(dataPenjualan){
-  let result = dataPenjualan.reduce((prev,cur) => prev+cur.totalTerjual, 0)
-
-  return result
+  return dataPenjualan.reduce((prev,cur) => prev+cur.totalTerjual, 0)
 }
 
 console.log(hitungTotalPenjualan(dataPenjualanPakAldi)) // => 307

@@ -1,17 +1,11 @@
 function getAngkaTerbesarKedua(dataNumbers){
   const data = []
-  let hasil
   
-  if(typeof(dataNumbers) == 'object'){
-    new Set(dataNumbers).forEach((item) => data.push(item))
-    hasil = data.sort((a,b) => b-a)[1]
-  } else if(typeof(dataNumbers) == 'number'){
-    hasil = "ERROR : Your input is not array"
-  } else if(typeof(dataNumbers) == 'undefined'){
-    hasil = "ERROR : Data cannot be empty"
-  }
+  if(typeof(dataNumbers) == 'undefined'){return "ERROR : Data cannot be empty"}
+  if(typeof(dataNumbers) !== 'object'){return "ERROR : Your input is not array"}
   
-  return hasil
+  new Set(dataNumbers).forEach((item) => data.push(item))
+  return data.sort((a,b) => b-a)[1]
 }
 
 const dataAngka = [9,4,7,7,4,3,2,2,8]

@@ -1,33 +1,31 @@
 function isValidPassword(givenPassword) {
-  let result
+  
+  if(typeof(givenPassword) == 'undefined'){return `ERROR : (Password tidak boleh kosong)`}
 
-  if(typeof(givenPassword) == 'undefined'){givenPassword = '-'}
-
-  if(givenPassword.toString().match(/[A-Z]/) && givenPassword.toString().match(/[a-z]/) && givenPassword.toString().match(/[0-9]/)){
-    if(givenPassword.length >= 8){
-      result = true
-    } else {
-      result = false + ` (Karena ${givenPassword} hanya terdiri dari ${givenPassword.length} huruf)`
-    }
-  } else if(givenPassword.toString().match(/[a-z]/) && givenPassword.toString().match(/[0-9]/)){
-    if(givenPassword.length >= 8){
-      result = result = false + ` (Karena ${givenPassword} tidak ada huruf besar)`
-    } else {
-      result = false + ` (Karena ${givenPassword} tidak ada huruf besar dan hanya terdiri dari ${givenPassword.length} huruf)`
-    }
-  } else if(givenPassword.toString().match(/[a-z/@#$%&*]/)){
-    if(givenPassword.length >= 8){
-      result = result = false + ` (Karena ${givenPassword} tidak ada angka)`
-    } else {
-      result = false + ` (Karena ${givenPassword} tidak ada angka dan hanya terdiri dari ${givenPassword.length} huruf)`
-    }
-  } else if(givenPassword.toString().match(/[0-9]/)) {
-    result = false + ` (Karena ${givenPassword} hanya berisikan number)`
-  } else if(givenPassword == '-'){
-    result = `ERROR : (Password tidak boleh kosong)`
+  if(givenPassword.length >= 8 && givenPassword.toString().match(/[A-Z]/) && givenPassword.toString().match(/[a-z]/) && givenPassword.toString().match(/[0-9]/)){
+    return true
   }
-
-  return result
+  
+  if(givenPassword.length < 8 && givenPassword.toString().match(/[A-Z]/) && givenPassword.toString().match(/[a-z]/) && givenPassword.toString().match(/[0-9]/)){
+    return `false (Karena ${givenPassword} hanya terdiri dari ${givenPassword.length} huruf)`
+  }
+  
+  if(givenPassword.length >= 8 && givenPassword.toString().match(/[a-z]/) && givenPassword.toString().match(/[0-9]/)){
+    return `false (Karena ${givenPassword} tidak ada huruf besar)`
+  }
+  
+  if(givenPassword.length < 8 && givenPassword.toString().match(/[a-z]/) && givenPassword.toString().match(/[0-9]/)){
+    return `false (Karena ${givenPassword} tidak ada huruf besar dan hanya terdiri dari ${givenPassword.length} huruf)`
+  }
+  
+  if(givenPassword.length >= 8 && givenPassword.toString().match(/[a-z/@#$%&*]/)){
+    return `false (Karena ${givenPassword} tidak ada angka)`
+  }
+  if(givenPassword.length < 8 && givenPassword.toString().match(/[a-z/@#$%&*]/)){
+    return `false (Karena ${givenPassword} tidak ada angka dan hanya terdiri dari ${givenPassword.length} huruf)`
+  }
+  
+  return `false (Karena ${givenPassword} hanya berisikan number)` 
 }
 
 // RESULT
